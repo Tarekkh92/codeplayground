@@ -1,59 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Embedded Scripts</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Tools Collection</title>
 </head>
 <body>
+    <h1>Web Tools Collection</h1>
+    <ul id="toolList">
+        <!-- Tool iframes will be loaded here -->
+    </ul>
 
-<h1>To do list</h1>
-<div id="todoList"></div>
+    <script>
+        // Tool titles and URLs
+        const tools = [
+            { title: "Todo List", url: "https://jsfiddle.net/fardos/8t19adLn/2/" },
+            { title: "Temperature vs Fahrenheit", url: "https://jsfiddle.net/fardos/dkwctay2/9/" },
+            { title: "Calculator", url: "https://jsfiddle.net/fardos/uy0p31fq/51/" },
+            { title: "New Year's Countdown", url: "https://jsfiddle.net/fardos/qfhcetsm/10/" },
+            { title: "BMI Calculator", url: "https://jsfiddle.net/fardos/ufoj3kr6/7/" },
+            { title: "Expenses", url: "https://jsfiddle.net/fardos/syjt40oa/" },
+            { title: "Basic Landing Page", url: "https://jsfiddle.net/fardos/yt20ek7L/1/" },
+            { title: "Local Storage Todo List", url: "https://jsfiddle.net/fardos/eum0z1yt/1/" },
+            { title: "Audio File Player", url: "https://jsfiddle.net/fardos/2uL0ykcb/5/" },
+            { title: "Youtube Video Player", url: "https://jsfiddle.net/fardos/xgom9dfu/29/" },
+            { title: "Cash Converter", url: "https://jsfiddle.net/fardos/4ea6ut1n/18/" },
+            { title: "Social Media", url: "https://jsfiddle.net/fardos/7yd0exhk/2/" },
+            { title: "Markdown", url: "https://jsfiddle.net/fardos/s3vm4bco/3/" },
+            { title: "Age Calculator", url: "https://jsfiddle.net/fardos/zo6etckf/2/" },
+            { title: "Snake Game", url: "https://jsfiddle.net/fardos/pfwnz27a/8/" },
+            { title: "Speech", url: "https://jsfiddle.net/fardos/ahxnLecg/5/" },
+            { title: "Random Quote", url: "https://jsfiddle.net/fardos/tac9q30h/5/" },
+            { title: "Postman Clone", url: "https://jsfiddle.net/fardos/f83xn2o4/7/" },
+            { title: "Lorem Ipsum Generator", url: "https://jsfiddle.net/fardos/ozp8qsgf/19/" },
+            { title: "Draw", url: "https://jsfiddle.net/fardos/ta3pv9xh/5/" },
+            { title: "Alarm", url: "https://jsfiddle.net/fardos/w9mzL34s/1/" },
+            { title: "Popup", url: "https://jsfiddle.net/fardos/wjy3ocqa/23/" },
+            { title: "Recipe", url: "https://jsfiddle.net/fardos/nhLeos12/5/" },
+            { title: "Word and Letter Counter", url: "https://jsfiddle.net/fardos/rdz70swv/1/" },
+            { title: "Sudoku", url: "https://jsfiddle.net/fardos/e65sh3zx/32/" },
+            { title: "PDF Viewer", url: "https://jsfiddle.net/fardos/emuzbaxr/11/" },
+            { title: "URL Shortener", url: "https://jsfiddle.net/fardos/oatexhqc/5/" },
+            { title: "GPS Tracker", url: "https://jsfiddle.net/fardos/kx2q0amd/1/" },
+            { title: "QR Code Reader", url: "https://jsfiddle.net/fardos/ja891rqe/2/" }
+        ];
 
-<h1>Weather</h1>
-<div id="weather"></div>
+        const toolList = document.getElementById('toolList');
 
-<h1>Quiz</h1>
-<div id="quiz"></div>
-
-<h1>BMI</h1>
-<div id="bmi"></div>
-
-<h1>Expenses</h1>
-<div id="expenses"></div>
-
-<h1>Basic Landing Page</h1>
-<div id="landingPage"></div>
-
-<script>
-  // Script for To do list
-  fetch('https://jsfiddle.net/fardos/8t19adLn/2/embedded/')
-    .then(response => response.text())
-    .then(html => document.getElementById('todoList').innerHTML = html);
-
-  // Script for Weather
-  fetch('https://jsfiddle.net/fardos/62rLk7j0/6/embedded/')
-    .then(response => response.text())
-    .then(html => document.getElementById('weather').innerHTML = html);
-
-  // Script for Quiz
-  fetch('https://jsfiddle.net/fardos/k50ybcsd/embedded/')
-    .then(response => response.text())
-    .then(html => document.getElementById('quiz').innerHTML = html);
-
-  // Script for BMI
-  fetch('https://jsfiddle.net/fardos/ufoj3kr6/7/embedded/')
-    .then(response => response.text())
-    .then(html => document.getElementById('bmi').innerHTML = html);
-
-  // Script for Expenses
-  fetch('https://jsfiddle.net/fardos/syjt40oa/embedded/')
-    .then(response => response.text())
-    .then(html => document.getElementById('expenses').innerHTML = html);
-
-  // Script for Basic Landing Page
-  fetch('https://jsfiddle.net/fardos/yt20ek7L/1/embedded/')
-    .then(response => response.text())
-    .then(html => document.getElementById('landingPage').innerHTML = html);
-</script>
-
+        // Load each tool asynchronously
+        tools.forEach(tool => {
+            const listItem = document.createElement('li');
+            const title = document.createElement('h1');
+            title.textContent = tool.title;
+            listItem.appendChild(title);
+            const iframe = document.createElement('iframe');
+            iframe.src = `${tool.url}/embed/`;
+            iframe.title = tool.title;
+            iframe.style.width = "100%";
+            iframe.style.height = "400px"; // Adjust height as needed
+            listItem.appendChild(iframe);
+            toolList.appendChild(listItem);
+        });
+    </script>
 </body>
 </html>
